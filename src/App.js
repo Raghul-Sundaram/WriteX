@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './input.css'
+import Navigation from './Components/Navigation';
+import {  Route, Routes } from 'react-router-dom';
+import Home from './Components/Home.js'
+import Missing from './Components/Missing.js'
+import Trending from './Components/Trending';
+import Business from './Components/Business';
+import SignIn from './Components/SignIn';
+import UserDetails from './Components/UserDetails';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='flex justify-center items-center'>
+        <Navigation />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Home' element={<Home />} />
+          <Route path='/Trending' element={<Trending />} />
+          <Route path='/Business' element={<Business />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/userdetails' element={ <UserDetails/> }/>
+          <Route path='*' element={<Missing />} />
+        </Routes>
     </div>
   );
 }
