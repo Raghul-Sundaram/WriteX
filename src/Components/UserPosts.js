@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import {  Outlet } from 'react-router-dom'
+import React from 'react'
+import { useState, useEffect } from 'react'
 import Loading from './Loading.js'
 
 
-const Trending = () => {
+const UserPosts = () => {
     const API_KEY = 'bf39c6ecf85d40b5817d942bae2a750a'
-    const API_URl =`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${API_KEY}`
+    const API_URl =`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`
 
     
     
@@ -25,13 +25,13 @@ const Trending = () => {
         },
         []
     )
-  return (
-    <div className='flex items-center justify-center lg:mt-[10%] w-[90%] sm:mt-[20%]' >
-        <h1 className='text-xl absolute top-10'>Trending in the World!</h1>
 
-        {
-                isLoading ? <Loading /> : (
-                    <div className='w-[90%] h-auto  grid lg:grid-cols-3 gap-10 md:grid-cols-2 sm:grid-cols-1 '>
+  return (
+        <div className='w-[50%] grid grid-rows-1 gap-5 items-center justify-center'>
+          <p className='text-4xl '>Your Posts</p>
+          {
+                isLoading ? <Loading/> : (
+                    <div className='w-[90%] h-auto  grid lg:grid-cols-1 gap-10 md:grid-cols-1 sm:grid-cols-1 '>
                         {
                             newsList.map(
                                 (item) => (
@@ -50,10 +50,8 @@ const Trending = () => {
                 )
             }
 
-        <Outlet />
-
-    </div>
+        </div>
   )
 }
 
-export default Trending
+export default UserPosts

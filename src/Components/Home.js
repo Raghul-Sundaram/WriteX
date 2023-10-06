@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import Loading from './Loading'
 
 const Home = () => {
     const API_KEY = 'bf39c6ecf85d40b5817d942bae2a750a'
@@ -31,7 +32,7 @@ const Home = () => {
 
 
             {
-                isLoading ? <p>Loading....</p> : (
+                isLoading ? <Loading /> : (
                     <div className='w-[90%] h-auto  grid lg:grid-cols-3 gap-10 md:grid-cols-2 sm:grid-cols-1 '>
                         {
                             newsList.map(

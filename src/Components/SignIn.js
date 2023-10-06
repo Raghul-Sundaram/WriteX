@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Button from './Button'
 import { GoogleLogin } from '@react-oauth/google';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useGoogleLogin, googleLogout } from '@react-oauth/google';
 import axios from 'axios';
 import UserDetails from './UserDetails';
@@ -32,7 +32,7 @@ const SignIn = () => {
     onError: (error) => console.log('Login Failed:', error)
   });
 
-  
+
   useEffect(
     () => {
       if (user) {
@@ -61,28 +61,29 @@ const SignIn = () => {
 
   const navigate = useNavigate();
   return (
-    <div className='flex flex-col gap-10 items-center justify-center lg:mt-[10%] w-[90%] sm:mt-[20%]'>
-      <form id='form' className='flex flex-col gap-5 items-center justify-center'>
-        <input id='user_name' className='w-[500px] h-[50px] rounded-lg text-black pl-5 ' type='text' placeholder='username' name="username" />
-        <input id="pass_word" className='w-[500px] h-[50px] rounded-lg text-black pl-5' type='password' placeholder='password' name="password" />
-        <Button text="SignIn" onclick={(event) => (handleClick)} /> 
-        <div className='flex flex-col items-center justify-center gap-6'>
-          <h1>or</h1>
-          
-          {profile ? (
-            <div>
-              <UserDetails profile={profile} logOut={logOut}/>
-            </div>
-        ) : (
-          <GoogleLogin onSuccess={login}  onError={login}/>
-        )}
+    <div className=' w-[100%] vflex flex-col gap-10 items-center justify-center lg:mt-[10%]  sm:mt-[20%]'>
+
+
+      {profile ? (
+        <UserDetails profile={profile} logOut={logOut} />
+
+      ) : (
+        <div>
+
+          <form id='form' className='flex flex-col gap-5 items-center justify-center'>
+            <input id='user_name' className='w-[500px] h-[50px] rounded-lg text-black pl-5 ' type='text' placeholder='username' name="username" />
+            <input id="pass_word" className='w-[500px] h-[50px] rounded-lg text-black pl-5' type='password' placeholder='password' name="password" />
+            <Button text="SignIn" onclick={(event) => (handleClick)} />
+          </form>
+          <div className='flex flex-col items-center justify-center gap-6'>
+            <h1>or</h1>
+            <GoogleLogin onSuccess={login} onError={login} />
+          </div>
         </div>
-
-      </form>
-      <p>Don't have an Account?</p>
-      <Button text="SignUp" />
-    </div>
+      )
+      }
+      </div>
   )
-}
+    }
 
-export default SignIn
+      export default SignIn
